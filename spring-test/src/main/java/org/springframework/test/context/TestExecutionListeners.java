@@ -102,6 +102,7 @@ public @interface TestExecutionListeners {
 	 * @see org.springframework.test.context.support.DirtiesContextTestExecutionListener
 	 * @see org.springframework.test.context.transaction.TransactionalTestExecutionListener
 	 * @see org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener
+	 * @see org.springframework.test.context.event.ApplicationEventTestExecutionListener
 	 */
 	@AliasFor("value")
 	Class<? extends TestExecutionListener>[] listeners() default {};

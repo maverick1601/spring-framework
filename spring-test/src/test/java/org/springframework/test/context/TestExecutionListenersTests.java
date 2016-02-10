@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationConfigurationException;
+import org.springframework.test.context.event.ApplicationEventTestExecutionListener;
 import org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -57,7 +58,7 @@ public class TestExecutionListenersTests {
 		List<Class<?>> expected = asList(ServletTestExecutionListener.class,
 			DirtiesContextBeforeModesTestExecutionListener.class, DependencyInjectionTestExecutionListener.class,
 			DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class,
-			SqlScriptsTestExecutionListener.class);
+			SqlScriptsTestExecutionListener.class, ApplicationEventTestExecutionListener.class);
 		assertRegisteredListeners(DefaultListenersTestCase.class, expected);
 	}
 
@@ -69,7 +70,7 @@ public class TestExecutionListenersTests {
 		List<Class<?>> expected = asList(QuuxTestExecutionListener.class, ServletTestExecutionListener.class,
 			DirtiesContextBeforeModesTestExecutionListener.class, DependencyInjectionTestExecutionListener.class,
 			DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class,
-			SqlScriptsTestExecutionListener.class);
+			SqlScriptsTestExecutionListener.class, ApplicationEventTestExecutionListener.class);
 		assertRegisteredListeners(MergedDefaultListenersWithCustomListenerPrependedTestCase.class, expected);
 	}
 
@@ -81,7 +82,8 @@ public class TestExecutionListenersTests {
 		List<Class<?>> expected = asList(ServletTestExecutionListener.class,
 			DirtiesContextBeforeModesTestExecutionListener.class, DependencyInjectionTestExecutionListener.class,
 			DirtiesContextTestExecutionListener.class, TransactionalTestExecutionListener.class,
-			SqlScriptsTestExecutionListener.class, BazTestExecutionListener.class);
+			SqlScriptsTestExecutionListener.class, ApplicationEventTestExecutionListener.class,
+			BazTestExecutionListener.class);
 		assertRegisteredListeners(MergedDefaultListenersWithCustomListenerAppendedTestCase.class, expected);
 	}
 
@@ -93,7 +95,8 @@ public class TestExecutionListenersTests {
 		List<Class<?>> expected = asList(ServletTestExecutionListener.class,
 			DirtiesContextBeforeModesTestExecutionListener.class, DependencyInjectionTestExecutionListener.class,
 			BarTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
-			TransactionalTestExecutionListener.class, SqlScriptsTestExecutionListener.class);
+			TransactionalTestExecutionListener.class, SqlScriptsTestExecutionListener.class,
+			ApplicationEventTestExecutionListener.class);
 		assertRegisteredListeners(MergedDefaultListenersWithCustomListenerInsertedTestCase.class, expected);
 	}
 
